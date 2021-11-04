@@ -8,15 +8,25 @@
  */
 
 import produce from 'immer';
-import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
+import {
+  LOAD_STRINGS,
+  LOAD_STRINGS_SUCCESS,
+  LOAD_STRINGS_ERROR,
+  LOAD_REPOS_SUCCESS, // TODO: REMOVE
+  LOAD_REPOS, // TODO: REMOVE
+  LOAD_REPOS_ERROR, // TODO: REMOVE
+} from './constants';
 
 // The initial state of the App
+// TODO: add initial states to initialState
 export const initialState = {
+  string: '', // NOTE: added for dev.
+  strings: [], // NOTE: added for dev.
   loading: false,
   error: false,
-  currentUser: false,
+  currentUser: false, // TODO: remove when done
   userData: {
-    repositories: false,
+    repositories: false, // TODO: remove when done
   },
 };
 
@@ -24,6 +34,22 @@ export const initialState = {
 const appReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
+      case LOAD_STRINGS:
+        draft.loading = true;
+        draft.error = false;
+        break;
+
+      case LOAD_STRINGS_SUCCESS:
+        draft.userData.repositories = action.repos;
+        draft.loading = false;
+        draft.strings = action.payload; // TODO: verify if this works with getting strings
+        break;
+
+      case LOAD_STRINGS_ERROR:
+        draft.error = action.error;
+        draft.loading = false;
+        break;
+
       case LOAD_REPOS:
         draft.loading = true;
         draft.error = false;

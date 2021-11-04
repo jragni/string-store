@@ -15,8 +15,16 @@
  *    }
  */
 
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
+import {
+  LOAD_STRINGS,
+  LOAD_STRINGS_SUCCESS,
+  LOAD_STRINGS_ERROR,
+  LOAD_REPOS,
+  LOAD_REPOS_SUCCESS,
+  LOAD_REPOS_ERROR,
+} from './constants';
 
+// TODO: DELETE STARTING HERE
 /**
  * Load the repositories, this action starts the request saga
  *
@@ -55,5 +63,36 @@ export function repoLoadingError(error) {
   return {
     type: LOAD_REPOS_ERROR,
     error,
+  };
+}
+// END DELETE
+
+// TODO: Docstrings for 3 functions below.
+/** loadStrings
+ *
+ */
+export function loadStrings() {
+  return {
+    type: LOAD_STRINGS,
+  };
+}
+
+/** stringsLoaded
+ *
+ */
+export function stringsLoaded(strings) {
+  return {
+    type: LOAD_STRINGS_SUCCESS,
+    payload: strings,
+  };
+}
+
+/** stringsLoadingError
+ *
+ */
+export function stringLoadingError(error) {
+  return {
+    type: LOAD_STRINGS_ERROR,
+    payload: error,
   };
 }

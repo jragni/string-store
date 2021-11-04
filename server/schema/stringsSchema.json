@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://our.company.com/strings.schema.json",
+  "title": "String",
+  "description": "Strings for data.",
+  "type": "object",
+  "properties": {
+    "message": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "required": ["message"]
+}

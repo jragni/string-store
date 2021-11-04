@@ -11,7 +11,9 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
+// TODO: add homepage for string store
 import HomePage from 'containers/HomePage/Loadable';
+// TODO: add DataPage for string store
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
