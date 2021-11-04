@@ -14,6 +14,6 @@ const { CHANGE_STRING } = require('./constants');
 export function changeString(string) {
   return {
     type: CHANGE_STRING,
-    payload: string,
+    string,
   };
 }

@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable default-case, no-param-reassign */
 /** StringStoreHomeReducer
  * The reducer takes care of our data. Using actions, we can
  * update our application state. To add a new action, add it
@@ -17,10 +17,7 @@ const stringStoreHomeReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case CHANGE_STRING:
-        draft.string = action.payload;
-        break;
-      default:
-        draft.string = state.string;
+        draft.string = action.string;
         break;
     }
   });

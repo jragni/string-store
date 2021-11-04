@@ -19,13 +19,8 @@ import { createStructuredSelector } from 'reselect';
 // TODO: create messages for the fields.
 import reducer from './reducer';
 import { changeString } from './action';
-// App imports
-import {
-  makeSelectError,
-  makeSelectString,
-  makeSelectLoading,
-} from '../App/selectors';
-import { loadStrings } from '../App/actions';
+import { makeSelectString } from './selectors';
+
 // Styled Components
 import Section from './Section';
 import CenteredSection from './CenteredSection';
@@ -82,8 +77,6 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
 // TODO: create these callbackfunctions
 const mapStateToProps = createStructuredSelector({
   string: makeSelectString(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -91,11 +84,11 @@ export function mapDispatchToProps(dispatch) {
     onChangeString: evt => dispatch(changeString(evt.target.value)),
     onSubmitForm: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadStrings());
+      // dispatch(); TODO create a dispatch taht sends a request to the server
     },
   };
 }
-
+// FIXME: need to see changeString state.
 const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps,

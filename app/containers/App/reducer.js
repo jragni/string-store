@@ -40,7 +40,6 @@ const appReducer = (state = initialState, action) =>
         break;
 
       case LOAD_STRINGS_SUCCESS:
-        draft.userData.repositories = action.repos;
         draft.loading = false;
         draft.strings = action.payload; // TODO: verify if this works with getting strings
         break;
