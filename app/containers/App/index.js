@@ -12,7 +12,8 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
 // TODO: add homepage for string store
-import HomePage from 'containers/HomePage/Loadable';
+// import HomePage from 'containers/HomePage/Loadable';
+import StringStoreHomePage from 'containers/StringStoreHomePage/Loadable';
 // TODO: add DataPage for string store
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -41,7 +42,7 @@ export default function App() {
       </Helmet>
       <Header />
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={StringStoreHomePage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
