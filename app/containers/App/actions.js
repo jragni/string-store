@@ -114,7 +114,6 @@ export function postString() {
  * TODO: add docstrings
  */
 export function stringPosted(string) {
-  console.log('here STRING POSTED: ', string);
   return {
     type: POST_STRING_SUCCESS,
     string,

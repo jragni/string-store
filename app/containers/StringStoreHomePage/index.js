@@ -90,7 +90,7 @@ export function mapDispatchToProps(dispatch) {
     onSubmitForm: evt => {
       // if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       // dispatch(); TODO create a dispatch taht sends a request to the server
-      console.log('here on submit');
+      // console.log('here on submit');
       evt.preventDefault();
       dispatch(postString());
     },
