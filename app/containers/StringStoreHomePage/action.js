@@ -2,7 +2,7 @@
  * StringStoreHomePage Actions
  */
 
-const { CHANGE_STRING } = require('./constants');
+const { CHANGE_STRING, SUBMIT_STRING } = require('./constants');
 
 /** changeString
  * Action that changes the input field of the form.
@@ -14,6 +14,13 @@ const { CHANGE_STRING } = require('./constants');
 export function changeString(string) {
   return {
     type: CHANGE_STRING,
+    string,
+  };
+}
+
+export function submitString(string) {
+  return {
+    type: SUBMIT_STRING,
     string,
   };
 }

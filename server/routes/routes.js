@@ -22,6 +22,7 @@ router.get('/strings', (req, res, next) => res.json(db));
 /** POST /strings: make a new string given the message. */
 router.post('/strings', (req, res, next) => {
   // Validate the body of the request using the schema.
+  console.log('POST /strings');
   const result = jsonschema.validate(req.body, stringsSchema);
   if (!result.valid) {
     // TODO: add a generic error from boilerplate.

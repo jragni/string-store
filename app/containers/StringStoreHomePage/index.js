@@ -15,11 +15,15 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { useInjectReducer } from 'utils/injectReducer';
+import { useInjectSaga } from 'utils/injectSaga';
 import { createStructuredSelector } from 'reselect';
 // TODO: create messages for the fields.
+import saga from './saga';
 import reducer from './reducer';
 import { changeString } from './action';
 import { makeSelectString } from './selectors';
+
+import { postString } from '../App/actions';
 
 // Styled Components
 import Section from './Section';
@@ -39,6 +43,7 @@ StringStoreHomePage.propTypes = {
 
 export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
   useInjectReducer({ key, reducer });
+  useInjectSaga({ key, saga });
 
   // TODO add a message that verifies the user has successfully added or failed
   return (
@@ -68,13 +73,13 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
               onChange={onChangeString}
             />
           </label>
+          <button type="submit"> Submit </button>
         </Form>
       </div>
     </article>
   );
 }
 
-// TODO: create these callbackfunctions
 const mapStateToProps = createStructuredSelector({
   string: makeSelectString(),
 });
@@ -83,12 +88,14 @@ export function mapDispatchToProps(dispatch) {
   return {
     onChangeString: evt => dispatch(changeString(evt.target.value)),
     onSubmitForm: evt => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      // if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       // dispatch(); TODO create a dispatch taht sends a request to the server
+      console.log('here on submit');
+      evt.preventDefault();
+      dispatch(postString());
     },
   };
 }
-// FIXME: need to see changeString state.
 const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps,

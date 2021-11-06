@@ -16,6 +16,9 @@
  */
 
 import {
+  POST_STRING,
+  POST_STRING_SUCCESS,
+  POST_STRING_ERROR,
   LOAD_STRINGS,
   LOAD_STRINGS_SUCCESS,
   LOAD_STRINGS_ERROR,
@@ -78,21 +81,52 @@ export function loadStrings() {
 }
 
 /** stringsLoaded
- *
+ * TODO: add docstrings
  */
 export function stringsLoaded(strings) {
   return {
     type: LOAD_STRINGS_SUCCESS,
-    payload: strings,
+    strings,
   };
 }
 
 /** stringsLoadingError
- *
+ * TODO: add docstrings
  */
 export function stringLoadingError(error) {
   return {
     type: LOAD_STRINGS_ERROR,
-    payload: error,
+    error,
+  };
+}
+
+/**
+ * TODO: add docstring
+ * @returns
+ */
+export function postString() {
+  return {
+    type: POST_STRING,
+  };
+}
+
+/** stringPosted
+ * TODO: add docstrings
+ */
+export function stringPosted(string) {
+  console.log('here STRING POSTED: ', string);
+  return {
+    type: POST_STRING_SUCCESS,
+    string,
+  };
+}
+
+/** stringsLoadingError
+ * TODO: add docstrings
+ */
+export function stringPostingError(error) {
+  return {
+    type: POST_STRING_ERROR,
+    error,
   };
 }

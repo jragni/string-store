@@ -5,3 +5,4 @@
  */
 
 export const CHANGE_STRING = 'stringstore/StringStoreHomePage/CHANGE_STRING';
+export const SUBMIT_STRING = 'stringstore/StringStoreHomePage/SUBMIT_STRING';

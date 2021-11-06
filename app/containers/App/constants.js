@@ -18,3 +18,7 @@ export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
 export const LOAD_STRINGS = 'stringstore/App/LOAD_STRINGS';
 export const LOAD_STRINGS_SUCCESS = 'stringstore/App/LOAD_STRINGS_SUCCESS';
 export const LOAD_STRINGS_ERROR = 'stringstore/App/LOAD_STRINGS_ERROR';
+
+export const POST_STRING = 'stringstore/App/POST_STRING';
+export const POST_STRING_SUCCESS = 'stringstore/App/POST_STRING_SUCCESS';
+export const POST_STRING_ERROR = 'stringstore/App/POST_STRING_ERROR';

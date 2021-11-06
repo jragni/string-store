@@ -12,6 +12,9 @@ import {
   LOAD_STRINGS,
   LOAD_STRINGS_SUCCESS,
   LOAD_STRINGS_ERROR,
+  POST_STRING,
+  POST_STRING_SUCCESS,
+  POST_STRING_ERROR,
   LOAD_REPOS_SUCCESS, // TODO: REMOVE
   LOAD_REPOS, // TODO: REMOVE
   LOAD_REPOS_ERROR, // TODO: REMOVE
@@ -41,10 +44,25 @@ const appReducer = (state = initialState, action) =>
 
       case LOAD_STRINGS_SUCCESS:
         draft.loading = false;
-        draft.strings = action.payload; // TODO: verify if this works with getting strings
+        draft.strings = action.strings; // TODO: verify if this works with getting strings
         break;
 
       case LOAD_STRINGS_ERROR:
+        draft.error = action.error;
+        draft.loading = false;
+        break;
+
+      case POST_STRING:
+        draft.loading = true;
+        draft.error = false;
+        break;
+
+      case POST_STRING_SUCCESS:
+        draft.loading = false;
+        draft.string = action.string; // TODO: verify if this works with getting strings
+        break;
+
+      case POST_STRING_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
