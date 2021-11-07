@@ -1,5 +1,8 @@
 /**
  * StringStoreHomePage selectors
+ *
+ * States:
+ *  string {String}: the string used for the input.
  */
 
 import { createSelector } from 'reselect';

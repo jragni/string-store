@@ -6,7 +6,6 @@
  *
  * Renders:
  *  App -> StringStoreHomePage ->
- * TODO: add render paths for components
  */
 
 import React, { memo } from 'react';
@@ -34,17 +33,24 @@ import CenteredSection from './CenteredSection';
 import Input from './Input';
 import H2 from '../../components/H2';
 import Form from './Form';
+import { makeSelectLoading } from '../App/selectors';
 
 // key used for reducer
 const key = 'stringstorehome';
 
 StringStoreHomePage.propTypes = {
+  loading: PropTypes.bool,
   string: PropTypes.string,
   onChangeString: PropTypes.func,
   onSubmitForm: PropTypes.func,
 };
 
-export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
+export function StringStoreHomePage({
+  loading,
+  string,
+  onSubmitForm,
+  onChangeString,
+}) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
@@ -75,8 +81,13 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
               onChange={onChangeString}
             />
           </label>
+          {/* TODO add message for submit */}
           <button type="submit"> Submit </button>
           <ToastContainer position="bottom-center" closeOnClick="true" />
+          {/* TODO add message for the I tag  */}
+          <Section>
+            {loading ? <i> Adding string to database...</i> : ' '}
+          </Section>
         </Form>
       </div>
     </article>
@@ -84,6 +95,7 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
 }
 
 const mapStateToProps = createStructuredSelector({
+  loading: makeSelectLoading(),
   string: makeSelectString(),
 });
 

@@ -51,11 +51,15 @@ const appReducer = (state = initialState, action) =>
       case LOAD_STRINGS_ERROR:
         draft.error = action.error;
         draft.loading = false;
+        toast.error(action.error);
         break;
 
       case POST_STRING:
         draft.loading = true;
         draft.error = false;
+        toast.info('Adding string to database...', {
+          autoClose: 1000,
+        });
         break;
 
       case POST_STRING_SUCCESS:

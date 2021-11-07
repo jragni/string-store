@@ -93,7 +93,7 @@ export function stringsLoaded(strings) {
 /** stringsLoadingError
  * TODO: add docstrings
  */
-export function stringLoadingError(error) {
+export function stringsLoadingError(error) {
   return {
     type: LOAD_STRINGS_ERROR,
     error,

@@ -6,30 +6,8 @@ exports[`<Footer /> should render and match the snapshot 1`] = `
 >
   <section>
     <span>
-      This project is licensed under the MIT license.
+      This project is not licensed under the MIT license.
     </span>
-  </section>
-  <section>
-    <div
-      className="Wrapper-xnjoq9-0 dNmQIR"
-    >
-      <select
-        className="Select-sc-1sm01tk-0 wIjFa"
-        onChange={[Function]}
-        value="en"
-      >
-        <option
-          value="en"
-        >
-          en
-        </option>
-        <option
-          value="de"
-        >
-          de
-        </option>
-      </select>
-    </div>
   </section>
   <section>
     <span>
@@ -37,9 +15,9 @@ exports[`<Footer /> should render and match the snapshot 1`] = `
       Made with love by 
       <a
         className="A-br8h0y-0 dwVNvo"
-        href="https://twitter.com/mxstbr"
+        href="https://twitter.com/RaggleSoft"
       >
-        Max Stoiber
+        Jhensen Ray Agni
       </a>
       .
     

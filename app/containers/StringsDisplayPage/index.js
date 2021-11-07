@@ -4,17 +4,49 @@
  *
  */
 
-import React from 'react';
+import React, { memo, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Helmet } from 'react-helmet';
-import { useInjectReducer } from 'utils/injectReducer';
+import { useInjectSaga } from 'utils/injectSaga';
+import { createStructuredSelector } from 'reselect';
+import PropTypes from 'prop-types';
 
+import {
+  makeSelectStrings,
+  makeSelectLoading,
+  makeSelectError,
+} from 'containers/App/selectors';
 // import messages from './messages'; // TODO add this
 // Styled Components
 import H1 from 'components/H1';
-import List from './List';
+import StringsList from 'components/StringsList';
 
-export default function StringsDisplayPage({ strings, loading, error }) {
-  useInjectReducer({ key, saga });
+import { loadStrings } from 'containers/App/actions';
+import saga from './saga';
+
+const key = 'stringstoredisplay';
+
+StringsDisplayPage.propTypes = {
+  onMount: PropTypes.func,
+  strings: PropTypes.any,
+  loading: PropTypes.bool,
+  error: PropTypes.any,
+};
+
+export function StringsDisplayPage({ onMount, strings, loading, error }) {
+  useInjectSaga({ key, saga });
+
+  useEffect(function getStringsOnMount() {
+    onMount();
+  }, []);
+
+  const stringsListProps = {
+    strings,
+    loading,
+    error,
+  };
+
   return (
     <div>
       <Helmet>
@@ -28,7 +60,31 @@ export default function StringsDisplayPage({ strings, loading, error }) {
         {/* TODO add h1 message with a header */}
         List of Stored Strings
       </H1>
-      <List>{/* TODO add a prop to this */}</List>
+      <StringsList {...stringsListProps} />
     </div>
   );
 }
+
+const mapStateToProps = createStructuredSelector({
+  strings: makeSelectStrings(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+});
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onMount: () => {
+      dispatch(loadStrings());
+    },
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(StringsDisplayPage);

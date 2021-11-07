@@ -11,11 +11,8 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
-// TODO: add homepage for string store
-// import HomePage from 'containers/HomePage/Loadable';
 import StringStoreHomePage from 'containers/StringStoreHomePage/Loadable';
-// TODO: add DataPage for string store
-import FeaturePage from 'containers/FeaturePage/Loadable';
+import StringsDisplayPage from 'containers/StringsDisplayPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -35,15 +32,15 @@ export default function App() {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - String Store"
+        defaultTitle="React.js String Store"
       >
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Header />
       <Switch>
         <Route exact path="/" component={StringStoreHomePage} />
-        <Route path="/features" component={FeaturePage} />
+        <Route path="/strings" component={StringsDisplayPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
