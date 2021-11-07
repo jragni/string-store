@@ -1,7 +1,14 @@
 import produce from 'immer';
 
 import appReducer from '../reducer';
-import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import {
+  loadStrings,
+  stringsLoaded,
+  stringsLoadingError,
+  postString,
+  stringPosted,
+  stringPostingError,
+} from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('appReducer', () => {
@@ -10,10 +17,8 @@ describe('appReducer', () => {
     state = {
       loading: false,
       error: false,
-      currentUser: false,
-      userData: {
-        repositories: false,
-      },
+      string: '',
+      strings: [],
     };
   });
 
@@ -22,35 +27,31 @@ describe('appReducer', () => {
     expect(appReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('should handle the loadRepos action correctly', () => {
+  it('should handle the loadStrings action correctly', () => {
     const expectedResult = produce(state, draft => {
       draft.loading = true;
       draft.error = false;
-      draft.userData.repositories = false;
+      draft.strings = [];
     });
 
-    expect(appReducer(state, loadRepos())).toEqual(expectedResult);
+    expect(appReducer(state, loadStrings())).toEqual(expectedResult);
   });
 
-  it('should handle the reposLoaded action correctly', () => {
+  it('should handle the stringsLoaded action correctly', () => {
     const fixture = [
       {
-        name: 'My Repo',
+        message: 'My String',
       },
     ];
-    const username = 'test';
     const expectedResult = produce(state, draft => {
-      draft.userData.repositories = fixture;
+      draft.strings = fixture;
       draft.loading = false;
-      draft.currentUser = username;
     });
 
-    expect(appReducer(state, reposLoaded(fixture, username))).toEqual(
-      expectedResult,
-    );
+    expect(appReducer(state, stringsLoaded(fixture))).toEqual(expectedResult);
   });
 
-  it('should handle the repoLoadingError action correctly', () => {
+  it('should handle the stringsLoadingError action correctly', () => {
     const fixture = {
       msg: 'Not found',
     };
@@ -59,7 +60,44 @@ describe('appReducer', () => {
       draft.loading = false;
     });
 
-    expect(appReducer(state, repoLoadingError(fixture))).toEqual(
+    expect(appReducer(state, stringsLoadingError(fixture))).toEqual(
+      expectedResult,
+    );
+  });
+
+  it('should handle the postString action correctly', () => {
+    const expectedResult = produce(state, draft => {
+      draft.loading = true;
+      draft.error = false;
+    });
+
+    expect(appReducer(state, postString())).toEqual(expectedResult);
+  });
+
+  it('should handle the stringPosted action correctly', () => {
+    const fixture = [
+      {
+        string: 'My String',
+      },
+    ];
+    const expectedResult = produce(state, draft => {
+      draft.string = fixture;
+      draft.loading = false;
+    });
+
+    expect(appReducer(state, stringPosted(fixture))).toEqual(expectedResult);
+  });
+
+  it('should handle the stringsPostingError action correctly', () => {
+    const fixture = {
+      msg: 'Not found',
+    };
+    const expectedResult = produce(state, draft => {
+      draft.error = fixture;
+      draft.loading = false;
+    });
+
+    expect(appReducer(state, stringPostingError(fixture))).toEqual(
       expectedResult,
     );
   });

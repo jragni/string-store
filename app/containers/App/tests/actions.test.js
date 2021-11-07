@@ -9,7 +9,6 @@ import {
 
 import { loadStrings, stringsLoaded, stringsLoadingError } from '../actions';
 
-// TODO add tests for load and post
 // TODO add negative tests as well
 describe('App Actions', () => {
   describe('loadStrings', () => {
