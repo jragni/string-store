@@ -17,6 +17,9 @@ import { compose } from 'redux';
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import { createStructuredSelector } from 'reselect';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 // TODO: create messages for the fields.
 import saga from './saga';
 import reducer from './reducer';
@@ -45,7 +48,6 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
-  // TODO add a message that verifies the user has successfully added or failed
   return (
     <article>
       <Helmet>
@@ -74,6 +76,7 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
             />
           </label>
           <button type="submit"> Submit </button>
+          <ToastContainer position="bottom-center" closeOnClick="true" />
         </Form>
       </div>
     </article>
@@ -88,9 +91,6 @@ export function mapDispatchToProps(dispatch) {
   return {
     onChangeString: evt => dispatch(changeString(evt.target.value)),
     onSubmitForm: evt => {
-      // if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      // dispatch(); TODO create a dispatch taht sends a request to the server
-      // console.log('here on submit');
       evt.preventDefault();
       dispatch(postString());
     },

@@ -8,6 +8,7 @@
  */
 
 import produce from 'immer';
+import { toast } from 'react-toastify';
 import {
   LOAD_STRINGS,
   LOAD_STRINGS_SUCCESS,
@@ -60,11 +61,13 @@ const appReducer = (state = initialState, action) =>
       case POST_STRING_SUCCESS:
         draft.loading = false;
         draft.string = action.string; // TODO: verify if this works with getting strings
+        toast.success('String added!');
         break;
 
       case POST_STRING_ERROR:
         draft.error = action.error;
         draft.loading = false;
+        toast.error(action.error);
         break;
 
       case LOAD_REPOS:
