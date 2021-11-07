@@ -11,19 +11,20 @@ import { Helmet } from 'react-helmet';
 import { useInjectSaga } from 'utils/injectSaga';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import {
   makeSelectStrings,
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
-// import messages from './messages'; // TODO add this
 // Styled Components
 import H1 from 'components/H1';
 import StringsList from 'components/StringsList';
 
 import { loadStrings } from 'containers/App/actions';
 import saga from './saga';
+import messages from './messages';
 
 const key = 'stringstoredisplay';
 
@@ -57,8 +58,7 @@ export function StringsDisplayPage({ onMount, strings, loading, error }) {
         />
       </Helmet>
       <H1>
-        {/* TODO add h1 message with a header */}
-        List of Stored Strings
+        <FormattedMessage {...messages.header} />
       </H1>
       <StringsList {...stringsListProps} />
     </div>

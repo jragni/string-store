@@ -1,3 +1,5 @@
+/** Messages for StringStoreHomePage */
+
 import { defineMessages } from 'react-intl';
 
 export const scope = 'stringstore.containers.StringStoreHomePage';

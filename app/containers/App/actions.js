@@ -22,56 +22,11 @@ import {
   LOAD_STRINGS,
   LOAD_STRINGS_SUCCESS,
   LOAD_STRINGS_ERROR,
-  LOAD_REPOS,
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS_ERROR,
 } from './constants';
 
-// TODO: DELETE STARTING HERE
-/**
- * Load the repositories, this action starts the request saga
- *
- * @return {object} An action object with a type of LOAD_REPOS
- */
-export function loadRepos() {
-  return {
-    type: LOAD_REPOS,
-  };
-}
-
-/**
- * Dispatched when the repositories are loaded by the request saga
- *
- * @param  {array} repos The repository data
- * @param  {string} username The current username
- *
- * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
- */
-export function reposLoaded(repos, username) {
-  return {
-    type: LOAD_REPOS_SUCCESS,
-    repos,
-    username,
-  };
-}
-
-/**
- * Dispatched when loading the repositories fails
- *
- * @param  {object} error The error
- *
- * @return {object}       An action object with a type of LOAD_REPOS_ERROR passing the error
- */
-export function repoLoadingError(error) {
-  return {
-    type: LOAD_REPOS_ERROR,
-    error,
-  };
-}
-// END DELETE
-
-// TODO: Docstrings for 3 functions below.
 /** loadStrings
+ *
+ * Load the list of strings, this action starts the request saga
  *
  */
 export function loadStrings() {
@@ -81,7 +36,14 @@ export function loadStrings() {
 }
 
 /** stringsLoaded
- * TODO: add docstrings
+ *
+ * Dispatches when loading the strings is successful
+ *
+ * @param {Array} strings: an array of objects from the database
+ *                         with data {id, messsage};
+ * @returns {object} : returns an object with key of type containing
+ *                     LOAD_STRINGS_SUCCESS and the array of string
+ *                     the array of strings
  */
 export function stringsLoaded(strings) {
   return {
@@ -91,7 +53,13 @@ export function stringsLoaded(strings) {
 }
 
 /** stringsLoadingError
- * TODO: add docstrings
+ *
+ * Dispatched when loading the data fails.
+ *
+ * @param {object} error: the error raised.
+ *
+ * @return {object}: An action object with a type of LOAD_REPOS_ERROR
+ *                   passing the error
  */
 export function stringsLoadingError(error) {
   return {
@@ -100,9 +68,9 @@ export function stringsLoadingError(error) {
   };
 }
 
-/**
- * TODO: add docstring
- * @returns
+/** postString
+ *
+ * Add string to the database, this action starts the request saga.
  */
 export function postString() {
   return {
@@ -111,7 +79,13 @@ export function postString() {
 }
 
 /** stringPosted
- * TODO: add docstrings
+ *
+ * Dispatches when the string has been successfully posted.
+ *
+ * @param {string} string: the string message to be saved to the database.
+ *
+ * @returns {object} : returns an object with key of type containing
+ *                     POST_STRING_SUCCESS and the string posted.
  */
 export function stringPosted(string) {
   return {
@@ -121,7 +95,13 @@ export function stringPosted(string) {
 }
 
 /** stringsLoadingError
- * TODO: add docstrings
+ *
+ * Dispatches when the string post fails.
+ *
+ * @param {object} error : the error raised.
+ *
+ * @return {object}: An action object with a type of LOAD_REPOS_ERROR
+ *                   passing the error
  */
 export function stringPostingError(error) {
   return {

@@ -9,7 +9,6 @@ const stringsSchema = require('../schema/stringsSchema.json');
 const { BadRequestError } = require('../expressError');
 
 // NOTE: db used in place of postgresql per instruction.
-// TODO: add tests for each route.
 
 let db = [
   {
@@ -38,6 +37,10 @@ router.post('/strings', (req, res, next) => {
 router.delete('/strings/:id', (req, res, next) => {
   // NOTE: no admin validation on delete. (will add upon further iteration).
   const { id } = req.params;
+  if (!id || id > db.length) {
+    throw new BadRequestError();
+  }
+
   // NOTE: not the most efficient wayh to do this, for demonstration purposes only.
   db = db.slice(0, id).concat(db.slice(id + 1));
   return res

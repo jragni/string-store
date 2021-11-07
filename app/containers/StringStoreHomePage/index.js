@@ -18,6 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
 import { FormattedMessage } from 'react-intl';
+import H1 from 'components/H1';
 import saga from './saga';
 import reducer from './reducer';
 import { changeString } from './action';
@@ -55,9 +56,9 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
       </Helmet>
       <div>
         <CenteredSection>
-          <H2>
+          <H1>
             <FormattedMessage {...messages.header} />
-          </H2>
+          </H1>
           <p>
             <FormattedMessage {...messages.headerMessage} />
           </p>
