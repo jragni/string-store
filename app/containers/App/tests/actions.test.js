@@ -1,43 +1,86 @@
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from '../constants';
+import {
+  POST_STRING,
+  POST_STRING_SUCCESS,
+  POST_STRING_ERROR,
+  LOAD_STRINGS,
+  LOAD_STRINGS_SUCCESS,
+  LOAD_STRINGS_ERROR,
+} from '../constants';
 
-import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import { loadStrings, stringsLoaded, stringsLoadingError } from '../actions';
 
+// TODO add tests for load and post
+// TODO add negative tests as well
 describe('App Actions', () => {
-  describe('loadRepos', () => {
+  describe('loadStrings', () => {
     it('should return the correct type', () => {
       const expectedResult = {
-        type: LOAD_REPOS,
+        type: LOAD_STRINGS,
       };
 
-      expect(loadRepos()).toEqual(expectedResult);
+      expect(loadStrings()).toEqual(expectedResult);
     });
   });
 
-  describe('reposLoaded', () => {
+  describe('stringsLoaded', () => {
     it('should return the correct type and the passed repos', () => {
       const fixture = ['Test'];
-      const username = 'test';
       const expectedResult = {
-        type: LOAD_REPOS_SUCCESS,
-        repos: fixture,
-        username,
+        type: LOAD_STRINGS_SUCCESS,
+        strings: fixture,
       };
 
-      expect(reposLoaded(fixture, username)).toEqual(expectedResult);
+      expect(stringsLoaded(fixture)).toEqual(expectedResult);
     });
   });
 
-  describe('repoLoadingError', () => {
+  describe('stringsLoadingError', () => {
     it('should return the correct type and the error', () => {
       const fixture = {
         msg: 'Something went wrong!',
       };
       const expectedResult = {
-        type: LOAD_REPOS_ERROR,
+        type: LOAD_STRINGS_ERROR,
         error: fixture,
       };
 
-      expect(repoLoadingError(fixture)).toEqual(expectedResult);
+      expect(stringsLoadingError(fixture)).toEqual(expectedResult);
+    });
+  });
+
+  describe('postString', () => {
+    it('should return the correct type', () => {
+      const expectedResult = {
+        type: POST_STRING,
+      };
+
+      expect(loadStrings()).toEqual(expectedResult);
+    });
+  });
+
+  describe('stringPosted', () => {
+    it('should return the correct type and the passed repos', () => {
+      const fixture = 'Test';
+      const expectedResult = {
+        type: POST_STRING_SUCCESS,
+        string: fixture,
+      };
+
+      expect(stringsLoaded(fixture)).toEqual(expectedResult);
+    });
+  });
+
+  describe('stringsPostingError', () => {
+    it('should return the correct type and the error', () => {
+      const fixture = {
+        msg: 'Something went wrong!',
+      };
+      const expectedResult = {
+        type: POST_STRING_ERROR,
+        error: fixture,
+      };
+
+      expect(stringsLoadingError(fixture)).toEqual(expectedResult);
     });
   });
 });
