@@ -4,44 +4,40 @@ import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 import { render } from 'react-testing-library';
 
-import ReposList from '../index';
+import StringsList from '../index';
 import configureStore from '../../../configureStore';
 
-describe('<ReposList />', () => {
+describe('<StringsList />', () => {
   it('should render the loading indicator when its loading', () => {
-    const { container } = render(<ReposList loading />);
+    const { container } = render(<StringsList loading />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should render an error if loading failed', () => {
     const { queryByText } = render(
       <IntlProvider locale="en">
-        <ReposList loading={false} error={{ message: 'Loading failed!' }} />
+        <StringsList loading={false} error={{ message: 'Loading failed!' }} />
       </IntlProvider>,
     );
     expect(queryByText(/Something went wrong/)).not.toBeNull();
   });
 
-  it('should render the repositories if loading was successful', () => {
-    const store = configureStore(
-      { global: { currentUser: 'mxstbr' } },
-      browserHistory,
-    );
+  it('should render the strings if loading was successful', () => {
+    const store = configureStore({ global: { string: '' } }, browserHistory);
     const repos = [
       {
-        owner: {
-          login: 'mxstbr',
-        },
-        html_url: 'https://github.com/react-boilerplate/react-boilerplate',
-        name: 'react-boilerplate',
-        open_issues_count: 20,
-        full_name: 'react-boilerplate/react-boilerplate',
+        id: 1,
+        message: 'TEST1',
+      },
+      {
+        id: 2,
+        message: 'TEST2',
       },
     ];
     const { container } = render(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <ReposList repos={repos} error={false} />
+          <StringsList strings={repos} error={false} />
         </IntlProvider>
       </Provider>,
     );
@@ -51,7 +47,7 @@ describe('<ReposList />', () => {
 
   it('should not render anything if nothing interesting is provided', () => {
     const { container } = render(
-      <ReposList repos={false} error={false} loading={false} />,
+      <StringsList strings={false} error={false} loading={false} />,
     );
 
     expect(container.firstChild).toBeNull();
