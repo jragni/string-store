@@ -21,7 +21,7 @@ import { FormattedMessage } from 'react-intl';
 import H1 from 'components/H1';
 import saga from './saga';
 import reducer from './reducer';
-import { changeString } from './action';
+import { changeString } from './actions';
 import { makeSelectString } from './selectors';
 
 import { postString } from '../App/actions';

@@ -7,7 +7,14 @@ import {
   LOAD_STRINGS_ERROR,
 } from '../constants';
 
-import { loadStrings, stringsLoaded, stringsLoadingError } from '../actions';
+import {
+  postString,
+  stringPosted,
+  stringPostingError,
+  loadStrings,
+  stringsLoaded,
+  stringsLoadingError,
+} from '../actions';
 
 // TODO add negative tests as well
 describe('App Actions', () => {
@@ -53,7 +60,7 @@ describe('App Actions', () => {
         type: POST_STRING,
       };
 
-      expect(loadStrings()).toEqual(expectedResult);
+      expect(postString()).toEqual(expectedResult);
     });
   });
 
@@ -65,7 +72,7 @@ describe('App Actions', () => {
         string: fixture,
       };
 
-      expect(stringsLoaded(fixture)).toEqual(expectedResult);
+      expect(stringPosted(fixture)).toEqual(expectedResult);
     });
   });
 
@@ -79,7 +86,7 @@ describe('App Actions', () => {
         error: fixture,
       };
 
-      expect(stringsLoadingError(fixture)).toEqual(expectedResult);
+      expect(stringPostingError(fixture)).toEqual(expectedResult);
     });
   });
 });

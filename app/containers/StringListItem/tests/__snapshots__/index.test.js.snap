@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StringListItem /> should render a ListItem 1`] = `
+<li
+  class="Wrapper-euo0oy-0 jLvxtc"
+>
+  <div
+    class="Item-sc-3y9mie-0 fKXSkT"
+  >
+    <div
+      class="Wrapper-sc-4ooklm-0 hKayeM"
+    >
+       
+      TEST
+       
+    </div>
+  </div>
+</li>
+`;
