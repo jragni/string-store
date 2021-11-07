@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
+
 /** Routes for the String Store App. */
 const express = require('express');
 const router = new express.Router();
 const jsonschema = require('jsonschema');
 const { updateString } = require('../helper');
 const stringsSchema = require('../schema/stringsSchema.json');
+const { BadRequestError } = require('../expressError');
 
 // NOTE: db used in place of postgresql per instruction.
 // TODO: add tests for each route.
@@ -22,11 +24,9 @@ router.get('/strings', (req, res, next) => res.json(db));
 /** POST /strings: make a new string given the message. */
 router.post('/strings', (req, res, next) => {
   // Validate the body of the request using the schema.
-  console.log('POST /strings');
   const result = jsonschema.validate(req.body, stringsSchema);
   if (!result.valid) {
-    // TODO: add a generic error from boilerplate.
-    throw new Error('ERROR: sqlinjection detected!');
+    throw new BadRequestError();
   }
 
   // Add request to db with id
@@ -52,9 +52,9 @@ router.patch('/strings/:id', (req, res, next) => {
 
   const result = jsonschema.validate(req.body);
   if (!result.valid) {
-    // TODO: add bad request error.
-    throw new Error('bad request');
+    throw new BadRequestError();
   }
+
   // Updates string and creates an updated database(array) or returns -1
   const newDb = updateString(db, id, message);
   if (newDb) {

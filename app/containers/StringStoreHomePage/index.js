@@ -53,7 +53,6 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
         <title> String Store Home Page</title>
         <meta name="description" content="String Store Application homepage" />
       </Helmet>
-      {/* TODO: add a centered section to add 1. landing statement 2. description 3. input */}
       <div>
         <CenteredSection>
           <H2>
@@ -77,7 +76,6 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
               onChange={onChangeString}
             />
           </label>
-          {/* TODO add message for submit */}
           <button type="submit"> Submit </button>
           <ToastContainer position="bottom-center" closeOnClick="true" />
         </Form>
