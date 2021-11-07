@@ -16,22 +16,14 @@ import {
   POST_STRING,
   POST_STRING_SUCCESS,
   POST_STRING_ERROR,
-  LOAD_REPOS_SUCCESS, // TODO: REMOVE
-  LOAD_REPOS, // TODO: REMOVE
-  LOAD_REPOS_ERROR, // TODO: REMOVE
 } from './constants';
 
 // The initial state of the App
-// TODO: add initial states to initialState
 export const initialState = {
-  string: '', // NOTE: added for dev.
-  strings: [], // NOTE: added for dev.
+  string: '',
+  strings: [],
   loading: false,
   error: false,
-  currentUser: false, // TODO: remove when done
-  userData: {
-    repositories: false, // TODO: remove when done
-  },
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -45,7 +37,7 @@ const appReducer = (state = initialState, action) =>
 
       case LOAD_STRINGS_SUCCESS:
         draft.loading = false;
-        draft.strings = action.strings; // TODO: verify if this works with getting strings
+        draft.strings = action.strings;
         break;
 
       case LOAD_STRINGS_ERROR:
@@ -64,7 +56,7 @@ const appReducer = (state = initialState, action) =>
 
       case POST_STRING_SUCCESS:
         draft.loading = false;
-        draft.string = action.string; // TODO: verify if this works with getting strings
+        draft.string = action.string;
         toast.success('String added!');
         break;
 
@@ -72,23 +64,6 @@ const appReducer = (state = initialState, action) =>
         draft.error = action.error;
         draft.loading = false;
         toast.error(action.error);
-        break;
-
-      case LOAD_REPOS:
-        draft.loading = true;
-        draft.error = false;
-        draft.userData.repositories = false;
-        break;
-
-      case LOAD_REPOS_SUCCESS:
-        draft.userData.repositories = action.repos;
-        draft.loading = false;
-        draft.currentUser = action.username;
-        break;
-
-      case LOAD_REPOS_ERROR:
-        draft.error = action.error;
-        draft.loading = false;
         break;
     }
   });

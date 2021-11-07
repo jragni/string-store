@@ -9,12 +9,6 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-// TODO: REMOVE UPON COMPLETION
-export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
-export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
-export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
-// end TODO
-
 export const LOAD_STRINGS = 'stringstore/App/LOAD_STRINGS';
 export const LOAD_STRINGS_SUCCESS = 'stringstore/App/LOAD_STRINGS_SUCCESS';
 export const LOAD_STRINGS_ERROR = 'stringstore/App/LOAD_STRINGS_ERROR';
