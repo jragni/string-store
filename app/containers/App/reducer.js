@@ -63,7 +63,7 @@ const appReducer = (state = initialState, action) =>
       case POST_STRING_ERROR:
         draft.error = action.error;
         draft.loading = false;
-        toast.error(action.error);
+        toast.error(`${action.error}`);
         break;
     }
   });
