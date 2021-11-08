@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 
 import { StringsDisplayPage, mapDispatchToProps } from '../index';
-// import { loadStrings } from '../../App/actions';
+import { loadStrings } from '../../App/actions';
 import configureStore from '../../../configureStore';
 
 describe('<StringDisplayPages />', () => {
@@ -36,5 +36,22 @@ describe('<StringDisplayPages />', () => {
       </Provider>,
     );
     expect(firstChild).toMatchSnapshot();
+  });
+});
+
+describe('mapDispatchToProps', () => {
+  describe('onMount', () => {
+    it('should be injected', () => {
+      const dispatch = jest.fn();
+      const result = mapDispatchToProps(dispatch);
+      expect(result.onMount).toBeDefined();
+    });
+
+    it('should dispatch loadStrings when called', () => {
+      const dispatch = jest.fn();
+      const result = mapDispatchToProps(dispatch);
+      result.onMount();
+      expect(dispatch).toHaveBeenCalledWith(loadStrings());
+    });
   });
 });
