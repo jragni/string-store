@@ -20,9 +20,6 @@ describe('getStrings Saga', () => {
 
     const selectDescriptor = getStringsGenerator.next().value;
     expect(selectDescriptor).toMatchSnapshot();
-
-    // const callDescriptor = getStringsGenerator.next(strings).value;
-    // expect(callDescriptor).toMatchSnapshot();
   });
 
   it('should dispatch the stringsLoaded action if it requests the data successfully', () => {

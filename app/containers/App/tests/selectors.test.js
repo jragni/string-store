@@ -16,16 +16,16 @@ describe('selectGlobal', () => {
   });
 });
 
-describe('makeSelectCurrentUser', () => {
-  const currentUserSelector = makeSelectStrings();
-  it('should select the input string', () => {
+describe('makeSelectError', () => {
+  const stringsSelector = makeSelectStrings();
+  it('should select the strings', () => {
     const strings = [{ id: 1, message: 'Test' }];
     const mockedState = {
       global: {
         strings,
       },
     };
-    expect(currentUserSelector(mockedState)).toEqual(strings);
+    expect(stringsSelector(mockedState)).toEqual(strings);
   });
 });
 
