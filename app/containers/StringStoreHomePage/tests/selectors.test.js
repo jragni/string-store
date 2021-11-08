@@ -18,3 +18,14 @@ describe('selectHome', () => {
     expect(selectStringStoreHome(mockedState)).toEqual(homeState);
   });
 });
+
+describe('makeSelectString', () => {
+  const stringSelector = makeSelectString();
+  it('should select string', () => {
+    const string = 'TEST';
+    const mockedState = {
+      stringstorehome: { string },
+    };
+    expect(stringSelector(mockedState)).toEqual(string);
+  });
+});
