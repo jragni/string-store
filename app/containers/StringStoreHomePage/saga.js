@@ -15,7 +15,6 @@ import { makeSelectString } from 'containers/StringStoreHomePage/selectors';
  */
 export function* postString() {
   const string = yield select(makeSelectString());
-  // TODO: will need to update the URL to host url for server.
   // NOTE: will use localhost temporarily.
   const requestURL = 'http://localhost:3000/api/strings';
   const callOptions = {

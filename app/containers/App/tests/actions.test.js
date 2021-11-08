@@ -16,7 +16,6 @@ import {
   stringsLoadingError,
 } from '../actions';
 
-// TODO add negative tests as well
 describe('App Actions', () => {
   describe('loadStrings', () => {
     it('should return the correct type', () => {

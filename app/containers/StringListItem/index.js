@@ -23,5 +23,3 @@ export default function StringListItem({ item }) {
 
   return <ListItem key={`string-list-item-${item.id}`} item={content} />;
 }
-
-// TODO add tests for viewing this component.
