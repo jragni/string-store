@@ -37,12 +37,6 @@ import messages from './messages';
 // key used for reducer
 const key = 'stringstorehome';
 
-StringStoreHomePage.propTypes = {
-  string: PropTypes.string,
-  onChangeString: PropTypes.func,
-  onSubmitForm: PropTypes.func,
-};
-
 export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
@@ -78,13 +72,21 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
               onChange={onChangeString}
             />
           </label>
-          <button type="submit"> Submit </button>
+          <button id="submit-btn" type="submit">
+            Submit
+          </button>
           <ToastContainer position="bottom-center" closeOnClick="true" />
         </Form>
       </div>
     </article>
   );
 }
+
+StringStoreHomePage.propTypes = {
+  string: PropTypes.string,
+  onChangeString: PropTypes.func,
+  onSubmitForm: PropTypes.func,
+};
 
 // NOTE: learning the library, would use useState hook for form input.
 const mapStateToProps = createStructuredSelector({
@@ -96,7 +98,7 @@ export function mapDispatchToProps(dispatch) {
   return {
     onChangeString: evt => dispatch(changeString(evt.target.value)),
     onSubmitForm: evt => {
-      evt.preventDefault();
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(postString());
     },
   };

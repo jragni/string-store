@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StringStoreHomePage /> tests should render and match the snapshot 1`] = `
+<article>
+  <div>
+    <section
+      class="Section-sc-1aa81e5-0 CenteredSection-a03e4t-0 ipgXKU"
+    >
+      <h1
+        class="H1-tncdg6-0 hpAKSC"
+      >
+        <span>
+          String Store App
+        </span>
+      </h1>
+      <p>
+        <span>
+          An application that allows you to store messages onto the database.
+        </span>
+      </p>
+    </section>
+    <section
+      class="Section-sc-1aa81e5-0 cMpMTA"
+    >
+      <h2
+        class="H2-egphza-0 HsCXl"
+      />
+    </section>
+    <form
+      class="Form-sc-1nhp6fs-0 fDGllY"
+    >
+      <label
+        for="string"
+      >
+        <span>
+          String: 
+        </span>
+        <input
+          class="Input-sc-1nspcs2-0 bUGHbU"
+          id="string"
+          placeholder="Enter string here..."
+          type="text"
+          value=""
+        />
+      </label>
+      <button
+        id="submit-btn"
+        type="submit"
+      >
+        Submit
+      </button>
+      <div
+        class="Toastify"
+      />
+    </form>
+  </div>
+</article>
+`;

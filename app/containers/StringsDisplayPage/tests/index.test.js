@@ -14,7 +14,7 @@ import configureStore from '../../../configureStore';
 
 describe('<StringDisplayPages />', () => {
   let store;
-  const onMount = jest.fn();
+  const onMountMock = jest.fn();
 
   beforeAll(() => {
     store = configureStore({}, browserHistory);
@@ -27,15 +27,32 @@ describe('<StringDisplayPages />', () => {
       <Provider store={store}>
         <IntlProvider locale="en">
           <StringsDisplayPage
-            onMount={onMount}
+            onMount={onMountMock}
             loading={false}
             error={false}
-            string={[]}
+            strings={[]}
           />
         </IntlProvider>
       </Provider>,
     );
     expect(firstChild).toMatchSnapshot();
+  });
+  it('should fetch the strings on mount', () => {
+    const strings = [{ id: 1, message: 'TEST1' }, { id: 2, message: 'TEST2' }];
+
+    render(
+      <Provider store={store}>
+        <IntlProvider locale="en">
+          <StringsDisplayPage
+            onMount={onMountMock}
+            loading={false}
+            error={false}
+            strings={strings}
+          />
+        </IntlProvider>
+      </Provider>,
+    );
+    expect(onMountMock).toHaveBeenCalled();
   });
 });
 
