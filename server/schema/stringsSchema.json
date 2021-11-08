@@ -5,7 +5,10 @@
   "description": "Strings for data.",
   "type": "object",
   "properties": {
-    "message": { "type": "string" }
+    "message": {
+      "type": "string",
+      "maxLength": 255
+    }
   },
   "additionalProperties": false,
   "required": ["message"]

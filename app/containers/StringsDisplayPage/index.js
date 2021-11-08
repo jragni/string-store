@@ -1,7 +1,6 @@
 /** StringsDisplayPage
  *
  * Component that displays all the strings stored on the database.
- *
  */
 
 import React, { memo, useEffect } from 'react';

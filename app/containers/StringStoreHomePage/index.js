@@ -48,6 +48,7 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
   useInjectSaga({ key, saga });
 
   // TODO need to add a styled component with conditional rendering!
+
   return (
     <article>
       <Helmet>
@@ -73,7 +74,7 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
               id="string"
               type="text"
               placeholder="Enter string here..."
-              value={string}
+              value={string} // Note: to discuss using string state see line 87
               onChange={onChangeString}
             />
           </label>
@@ -85,6 +86,7 @@ export function StringStoreHomePage({ string, onSubmitForm, onChangeString }) {
   );
 }
 
+// NOTE: learning the library, would use useState hook for form input.
 const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
   string: makeSelectString(),

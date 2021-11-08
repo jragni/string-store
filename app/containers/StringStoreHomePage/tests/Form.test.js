@@ -1,20 +1,20 @@
 import React from 'react';
 import { render } from 'react-testing-library';
 
-import List from '../List';
+import Form from '../Form';
 
-describe('<List />', () => {
-  it('should render an <ul> tag', () => {
+describe('<Form />', () => {
+  it('should render an <form> tag', () => {
     const {
       container: { firstChild },
-    } = render(<List />);
-    expect(firstChild.tagName).toEqual('UL');
+    } = render(<Form />);
+    expect(firstChild.tagName).toEqual('FORM');
   });
 
   it('should have a class attribute', () => {
     const {
       container: { firstChild },
-    } = render(<List />);
+    } = render(<Form />);
     expect(firstChild.hasAttribute('class')).toBe(true);
   });
 
@@ -22,14 +22,14 @@ describe('<List />', () => {
     const id = 'test';
     const {
       container: { firstChild },
-    } = render(<List id={id} />);
+    } = render(<Form id={id} />);
     expect(firstChild.id).toEqual(id);
   });
 
   it('should not adopt an invalid attribute', () => {
     const {
       container: { firstChild },
-    } = render(<List attribute="test" />);
+    } = render(<Form attribute="test" />);
     expect(firstChild.hasAttribute('attribute')).toBe(false);
   });
 });

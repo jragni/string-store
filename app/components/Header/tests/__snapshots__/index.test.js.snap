@@ -4,7 +4,7 @@ exports[`<Header /> should render a div 1`] = `
 <div>
   <a
     class="A-br8h0y-0 A-p44m4v-0 cYguYL"
-    href="https://www.reactboilerplate.com/"
+    href="https://www.dovenmuehle.com/"
   >
     <img
       alt="react-boilerplate - Logo"
@@ -16,7 +16,7 @@ exports[`<Header /> should render a div 1`] = `
     class="NavBar-sc-3b48xb-0 ioQxlc"
   >
     <a
-      class="HeaderLink-sc-1mtyaiv-0 hMiTYG"
+      class="HeaderLink-sc-1mtyaiv-0 aItQR"
       href="/"
     >
       <span>
@@ -24,7 +24,7 @@ exports[`<Header /> should render a div 1`] = `
       </span>
     </a>
     <a
-      class="HeaderLink-sc-1mtyaiv-0 hMiTYG"
+      class="HeaderLink-sc-1mtyaiv-0 aItQR"
       href="/strings"
     >
       <span>

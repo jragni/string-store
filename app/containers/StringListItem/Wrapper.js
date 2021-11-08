@@ -8,5 +8,3 @@ const Wrapper = styled.div`
 `;
 
 export default Wrapper;
-
-// TODO: add testing for this component.

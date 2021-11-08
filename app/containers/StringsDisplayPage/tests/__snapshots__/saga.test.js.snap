@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getStrings Saga should dispatch the stringsLoaded actiohn if it requests the data successfully 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [
+      "http://localhost:3000/api/strings",
+      Object {
+        "headers": Object {
+          "Content-Type": "application/json",
+        },
+        "methods": "GET",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;
+
+exports[`getStrings Saga should dispatch the stringsLoaded action if it requests the data successfully 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [
+      "http://localhost:3000/api/strings",
+      Object {
+        "headers": Object {
+          "Content-Type": "application/json",
+        },
+        "methods": "GET",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;
+
+exports[`getStrings Saga should dispatch the stringsLoadingError action if the response is errors 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [
+      "http://localhost:3000/api/strings",
+      Object {
+        "headers": Object {
+          "Content-Type": "application/json",
+        },
+        "methods": "GET",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;

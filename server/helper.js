@@ -14,7 +14,7 @@
  */
 function updateString(db, id, message) {
   for (const entry of db) {
-    if (entry.id === id) {
+    if (entry.id == id) {
       entry.message = message;
       return db;
     }
