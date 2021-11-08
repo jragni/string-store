@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/react-boilerplate/react-boilerplate-brand/master/assets/banner-metal-optimized.jpg" alt="react boilerplate banner" align="center" />
+<img src="https://github.com/jragni/string-store/blob/main/app/components/Header/Dovenmuhle%20Logo%202019-08.png" alt="dovenmuehle logo" align="center" />
 
 <br />
 
